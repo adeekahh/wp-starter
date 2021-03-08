@@ -1,19 +1,14 @@
 <?php
+
 /**
  * The template for displaying all pages.
  */
 
 get_header(); ?>
 
-  <main class="Main" role="main">
+<main class="Main" role="main">
+  <?php require_once locate_template('/template-parts/content-page.php'); // Content page modules 
+  ?>
+</main><!-- .Main -->
 
-    <?php while ( have_posts() ) : the_post(); ?>
-
-      <?php get_template_part( 'template-parts/page' ); ?>
-
-    <?php endwhile; // end of the loop. ?>
-
-  </main><!-- .Main -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

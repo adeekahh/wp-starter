@@ -1,33 +1,21 @@
 <?php
+
 /**
  * A custom template for the front page
  */
 
 get_header(); ?>
 
-  <main class="Main" role="main">
+<main class="Main" role="main">
 
-    <?php if ( have_posts() ) : ?>
+  <?php if (function_exists('have_rows') && have_rows('homepage_modules')) :
+    while (have_rows('homepage_modules')) : the_row();
+    //require get_theme_root() . '/wordpress-starter-theme-parcel-master/template-parts/homepage-modules/homepage-pagetop.php';
+    endwhile;
+  else :
+    the_content();
+  endif; ?>
 
-      <section class="FrontPage">
+</main><!-- .Main -->
 
-        <?php while ( have_posts() ) : the_post(); ?>
-
-          <?php get_template_part( 'template-parts/post', 'summary' ); ?>
-
-        <?php endwhile; ?>
-
-        <?php the_posts_navigation(); ?>
-
-      </section><!-- .FrontPage -->
-
-    <?php else : ?>
-
-      <?php get_template_part( 'template-parts/page', 'none' ); ?>
-
-    <?php endif; ?>
-
-  </main><!-- .Main -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
